@@ -1,0 +1,24 @@
+{
+	"name": "SouceDataSavingFromGit",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "linkedADLS",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"fileName": "fact.Csv",
+				"folderPath": "Csv files",
+				"fileSystem": "destin-movies-data"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": []
+	}
+}
