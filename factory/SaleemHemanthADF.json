@@ -1,0 +1,9 @@
+{
+	"name": "SaleemHemanthADF",
+	"location": "southafricanorth",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "89ab4a29-4719-4ce6-9571-c1e1600422b0",
+		"tenantId": "df949bf8-a3d6-436d-9edf-1fc0ac50e15d"
+	}
+}
