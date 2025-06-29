@@ -55,7 +55,7 @@
 				],
 				"outputs": [
 					{
-						"referenceName": "copymovieSoucedataActivity",
+						"referenceName": "copyDestiMovieDataActivity",
 						"type": "DatasetReference"
 					}
 				]
@@ -81,16 +81,10 @@
 				"userProperties": [],
 				"typeProperties": {
 					"dataset": {
-						"referenceName": "copyDestiMovieDataActivity",
+						"referenceName": "copymovieSoucedataActivity",
 						"type": "DatasetReference"
 					},
-					"logStorageSettings": {
-						"linkedServiceName": {
-							"referenceName": "linkedADLS",
-							"type": "LinkedServiceReference"
-						}
-					},
-					"enableLogging": true,
+					"enableLogging": false,
 					"storeSettings": {
 						"type": "AzureBlobFSReadSettings",
 						"recursive": true,
