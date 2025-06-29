@@ -1,0 +1,101 @@
+{
+	"name": "CompletCopyActivity",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "linkedADLS",
+			"type": "LinkedServiceReference"
+		},
+		"parameters": {
+			"Movie_file_name": {
+				"type": "string"
+			}
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"fileName": {
+					"value": "@dataset().Movie_file_name",
+					"type": "Expression"
+				},
+				"folderPath": "Csv files",
+				"fileSystem": "destin-movies-data"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": [
+			{
+				"name": "Title",
+				"type": "String"
+			},
+			{
+				"name": "Year",
+				"type": "String"
+			},
+			{
+				"name": "Director",
+				"type": "String"
+			},
+			{
+				"name": "Duration",
+				"type": "String"
+			},
+			{
+				"name": "Rating",
+				"type": "String"
+			},
+			{
+				"name": "Votes",
+				"type": "String"
+			},
+			{
+				"name": "Description",
+				"type": "String"
+			},
+			{
+				"name": "Language",
+				"type": "String"
+			},
+			{
+				"name": "Country",
+				"type": "String"
+			},
+			{
+				"name": "Budget_USD",
+				"type": "String"
+			},
+			{
+				"name": "BoxOffice_USD",
+				"type": "String"
+			},
+			{
+				"name": "Genre",
+				"type": "String"
+			},
+			{
+				"name": "Production_Company",
+				"type": "String"
+			},
+			{
+				"name": "Content_Rating",
+				"type": "String"
+			},
+			{
+				"name": "Lead_Actor",
+				"type": "String"
+			},
+			{
+				"name": "Num_Awards",
+				"type": "String"
+			},
+			{
+				"name": "Critic_Reviews",
+				"type": "String"
+			}
+		]
+	}
+}
