@@ -1,0 +1,96 @@
+{
+	"name": "TransformCSV",
+	"properties": {
+		"type": "MappingDataFlow",
+		"typeProperties": {
+			"sources": [
+				{
+					"dataset": {
+						"referenceName": "dataflowSource",
+						"type": "DatasetReference"
+					},
+					"name": "source1"
+				}
+			],
+			"sinks": [
+				{
+					"dataset": {
+						"referenceName": "sinkDataFlow",
+						"type": "DatasetReference"
+					},
+					"name": "sink"
+				}
+			],
+			"transformations": [
+				{
+					"name": "select"
+				},
+				{
+					"name": "sort"
+				},
+				{
+					"name": "filter"
+				},
+				{
+					"name": "rank"
+				},
+				{
+					"name": "alterRow"
+				}
+			],
+			"scriptLines": [
+				"source(output(",
+				"          Title as string,",
+				"          Year as short,",
+				"          Director as string,",
+				"          Duration as short,",
+				"          Rating as double,",
+				"          Votes as integer,",
+				"          Description as string,",
+				"          Language as string,",
+				"          Country as string,",
+				"          Budget_USD as integer,",
+				"          BoxOffice_USD as integer,",
+				"          Genre as string,",
+				"          Production_Company as string,",
+				"          Content_Rating as string,",
+				"          Lead_Actor as string,",
+				"          Num_Awards as short,",
+				"          Critic_Reviews as short",
+				"     ),",
+				"     allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     ignoreNoFilesFound: false) ~> source1",
+				"source1 select(mapColumn(",
+				"          Title,",
+				"          Year,",
+				"          Director,",
+				"          Rating,",
+				"          Votes,",
+				"          Language,",
+				"          Country,",
+				"          Budget_USD,",
+				"          BoxOffice_USD,",
+				"          Num_Awards",
+				"     ),",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true) ~> select",
+				"select sort(desc(Rating, false),",
+				"     desc(Votes, false)) ~> sort",
+				"sort filter(Language== 'English') ~> filter",
+				"filter rank(desc(BoxOffice_USD, true),",
+				"     output(Rank as long)) ~> rank",
+				"rank alterRow(insertIf(1==1),",
+				"     updateIf(1==1),",
+				"     deleteIf(1==1)) ~> alterRow",
+				"alterRow sink(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     umask: 0022,",
+				"     preCommands: [],",
+				"     postCommands: [],",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true) ~> sink"
+			]
+		}
+	}
+}

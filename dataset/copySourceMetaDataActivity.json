@@ -1,0 +1,32 @@
+{
+	"name": "copySourceMetaDataActivity",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "linkedADLS",
+			"type": "LinkedServiceReference"
+		},
+		"parameters": {
+			"Movie_file_name": {
+				"type": "string"
+			}
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"fileName": {
+					"value": "@dataset().Movie_file_name",
+					"type": "Expression"
+				},
+				"folderPath": "Csv files",
+				"fileSystem": "destin-movies-data"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": []
+	}
+}

@@ -1,0 +1,32 @@
+{
+	"name": "saveDataToReporting",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "linkedADLS",
+			"type": "LinkedServiceReference"
+		},
+		"parameters": {
+			"File_Movie_Name": {
+				"type": "string"
+			}
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"fileName": {
+					"value": "@dataset().File_Movie_Name",
+					"type": "Expression"
+				},
+				"folderPath": "Csv Files",
+				"fileSystem": "reporting"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": []
+	}
+}

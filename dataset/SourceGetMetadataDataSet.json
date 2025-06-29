@@ -1,0 +1,23 @@
+{
+	"name": "SourceGetMetadataDataSet",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "linkedADLS",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"folderPath": "Csv files",
+				"fileSystem": "source-movies-data"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": []
+	}
+}
